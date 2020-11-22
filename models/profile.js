@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   profile.init(
     {
-      description: DataTypes.STRING,
+      description: DataTypes.TEXT,
       imgUrl: DataTypes.STRING,
       hourlyRate: DataTypes.FLOAT,
       yearsOfExperience: DataTypes.INTEGER,

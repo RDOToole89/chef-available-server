@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       password: DataTypes.STRING,
-      dateOfBirth: DataTypes.DATE,
+      dateOfBirth: DataTypes.DATEONLY,
       address: DataTypes.STRING,
       city: DataTypes.STRING,
       postalCode: DataTypes.STRING,
