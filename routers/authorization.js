@@ -23,9 +23,9 @@ router.post("/login", async (req, res, next) => {
       });
     }
 
-    if (user.accountBlocked) {
-      return res.status(400).send({ message: "User with specified account has been blocked." });
-    }
+    // if (user.accountBlocked) {
+    //   return res.status(400).send({ message: "User with specified account has been blocked." });
+    // }
 
     delete user.dataValues["password"]; // don't send back the password hash
     const token = toJWT({ userId: user.id });

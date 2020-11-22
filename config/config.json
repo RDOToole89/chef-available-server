@@ -1,23 +1,20 @@
 {
   "development": {
-    "url": "postgres://bascutcp:NCdy7zK0uos43dp-Zfgdjct4dUbDedfV@kandula.db.elephantsql.com:5432/bascutcp",
-    "dialect": "postgres",
-    "operatorsAliases": "0"
+    "url": "postgres://fkxgknve:mAsqYnl-I3N2PnDQHGO5QzkE-QxssA3G@kandula.db.elephantsql.com:5432/fkxgknve",
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "operatorsAliases": "0"
+    "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "operatorsAliases": "0"
+    "dialect": "mysql"
   }
 }
