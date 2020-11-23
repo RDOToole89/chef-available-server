@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const authRouter = require("./routers/authorization");
 const app = express();
@@ -6,7 +7,7 @@ const PORT = 4000;
 // MiddleWares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(corsMiddleWare());
+app.use(cors());
 
 app.get("/", (req, res, next) => {
   res.json("Hello World");
