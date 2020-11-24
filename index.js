@@ -2,7 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const authRouter = require("./routers/authorization");
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // MiddleWares
 app.use(express.json());
