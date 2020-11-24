@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       userTag.belongsTo(models.specializationTag);
-      userTag.belongsTo(models.user);
+      userTag.belongsTo(models.profile);
     }
   }
   userTag.init(
     {
-      userId: DataTypes.INTEGER,
+      profileId: DataTypes.INTEGER,
       specializationTagId: DataTypes.INTEGER,
     },
     {

@@ -71,8 +71,6 @@ router.post("/signup", async (req, res, next) => {
       password: bcrypt.hashSync(password, SALT_ROUNDS),
     });
 
-    console.log("NEW YSER!!!!!", newUser);
-
     if (newUser) {
       try {
         const newProfile = await Profile.create({

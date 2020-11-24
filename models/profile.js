@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       profile.belongsTo(models.user);
+      profile.hasMany(models.specializationTag);
     }
   }
   profile.init(
