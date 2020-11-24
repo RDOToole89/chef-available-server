@@ -9,7 +9,11 @@ const router = new Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const users = await User.findAll({ attributes: { exclude: ["password"] }, include: [Profile] });
+    const users = await User.findAll({
+      where: { userType: "Chef" },
+      attributes: { exclude: ["password"] },
+      include: [Profile],
+    });
 
     res.json(users);
   } catch (e) {
