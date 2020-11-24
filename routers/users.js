@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
     const users = await User.findAll({
       where: { userType: "Chef" },
       attributes: { exclude: ["password"] },
-      include: [Profile],
+      include: [{ model: Profile, include: [SpecializationTag] }],
     });
 
     res.json(users);
