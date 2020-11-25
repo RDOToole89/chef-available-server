@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const specializationtag = require("../models/specializationtag");
 const SpecializationTag = require("../models/").specializationTag;
 const UserTag = require("../models").userTag;
 
@@ -35,6 +36,37 @@ router.delete("/user", async (req, res, next) => {
     }
   } catch (e) {
     return res.status(400).send({ message: "Could not delete specified tag" });
+  }
+});
+
+router.post("/user", async (req, res, next) => {
+  const { tagName, profileId } = req.body;
+
+  const specializationTagExist = await SpecializationTag.findOne({ where: { tagName: tagName } });
+  const allSpecializationTags = await SpecializationTag.findAll();
+
+  if (specializationTagExist) {
+    try {
+      const newUserTag = await UserTag.create({
+        profileId: profileId,
+        specializationTagId: specializationTagExist.id,
+      });
+
+      res.json(newUserTag);
+    } catch (e) {
+      next(e);
+    }
+  } else {
+    const newSpecializationTag = await SpecializationTag.create({
+      tagName: tagName,
+    });
+
+    const newUserTag = await UserTag.create({
+      profileId: profileId,
+      specializationTagId: allSpecializationTags.length + 1,
+    });
+
+    res.json({ specialization: newSpecializationTag, userTag: newUserTag });
   }
 });
 
