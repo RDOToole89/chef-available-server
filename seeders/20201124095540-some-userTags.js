@@ -31,6 +31,12 @@ module.exports = {
         },
         {
           profileId: 1,
+          specializationTagId: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 1,
           specializationTagId: 5,
           createdAt: new Date(),
           updatedAt: new Date(),

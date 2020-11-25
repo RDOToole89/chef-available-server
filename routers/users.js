@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
 
 module.exports = router;
 
-router.get("/:id/profile", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   const id = req.params;
   console.log("PARAMS", req.params, "ID", id);
 
