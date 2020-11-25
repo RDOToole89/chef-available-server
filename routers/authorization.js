@@ -11,7 +11,6 @@ const router = new Router();
 router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body);
 
     if (!email || !password) {
       return res.status(400).send({ message: "Please provide both email and password" });

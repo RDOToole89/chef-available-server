@@ -10,6 +10,7 @@ module.exports = {
           description:
             "Chef Roibin O'Toole is a passionate chef with over 14 years of experience cooking in various restaurants in Amsterdam. He specializes in French / Mediterranean cuisine and is available for work in a 20km radius around Amsterdam. ",
           imgUrl: "https://artzycafe.com/wp-content/uploads/2020/05/Vocations-in-Cooking.jpg",
+          position: "Head Chef",
           hourlyRate: 34.5,
           yearsOfExperience: 14,
           createdAt: new Date(),
@@ -20,6 +21,7 @@ module.exports = {
           description:
             "Chef Arjuna Munzer is a passionate chef with over 14 years of experience cooking in various restaurants in Amsterdam. He specializes in French / Mediterranean cuisine and is available for work in a 20km radius around Amsterdam. ",
           imgUrl: "https://www.earnmydegree.com/sites/all/files/public/images/become-chef.jpg",
+          position: "Sous Chef",
           hourlyRate: 38.5,
           yearsOfExperience: 10,
           createdAt: new Date(),
