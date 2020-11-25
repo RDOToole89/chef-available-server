@@ -56,7 +56,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          tagName: "Chef de Parti",
+          tagName: "Chef de Partie",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

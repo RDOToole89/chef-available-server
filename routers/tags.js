@@ -20,21 +20,20 @@ router.get("/", async (req, res, next) => {
 
 router.delete("/user", async (req, res, next) => {
   const { tagid } = req.headers;
-  console.log(req.headers);
-  console.log("TAGID", tagid);
 
   try {
     const userTagToDelete = await UserTag.findOne({ where: parseInt(tagid) });
+    // console.log("USERTAGTODELETE======", userTagToDelete);
 
     if (!userTagToDelete) {
       res.status(404).send("UserTag to remove not found.");
     }
 
-    const deletedUserTag = await userTagToDelete.destroy();
-
-    res.json(`Usertag with id:${tagid} has been removed`);
+    if (userTagToDelete) {
+      const deletedUserTag = await userTagToDelete.destroy();
+      res.json(`Usertag with id:${tagid} has been removed`);
+    }
   } catch (e) {
-    next(e);
     return res.status(400).send({ message: "Could not delete specified tag" });
   }
 });

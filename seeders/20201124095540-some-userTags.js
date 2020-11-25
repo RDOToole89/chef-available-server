@@ -31,12 +31,6 @@ module.exports = {
         },
         {
           profileId: 1,
-          specializationTagId: 4,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          profileId: 1,
           specializationTagId: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -68,6 +62,30 @@ module.exports = {
         {
           profileId: 2,
           specializationTagId: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 1,
+          specializationTagId: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 2,
+          specializationTagId: 12,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 1,
+          specializationTagId: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 2,
+          specializationTagId: 14,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
