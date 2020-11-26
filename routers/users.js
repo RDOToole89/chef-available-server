@@ -1,9 +1,11 @@
 const { Router } = require("express");
 const authMiddleware = require("../auth/middleware");
+const AvailableDate = require("../models/").availableDate;
 const User = require("../models/").user;
 const Profile = require("../models/").profile;
-
 const SpecializationTag = require("../models/").specializationTag;
+
+console.log("AVAILABLE DATE", AvailableDate);
 
 const router = new Router();
 
@@ -17,6 +19,7 @@ router.get("/", async (req, res, next) => {
 
     res.json(users);
   } catch (e) {
+    console.log(e);
     return res.status(400).send({ message: "Unable to fetch users" });
   }
 });
@@ -28,7 +31,7 @@ router.get("/:id", async (req, res, next) => {
     const user = await User.findOne({
       where: id,
       attributes: { exclude: ["password"] },
-      include: [{ model: Profile, include: [SpecializationTag] }],
+      include: [{ model: Profile, include: [SpecializationTag, AvailableDate] }],
       // include: [{ model: Profile, attributes: { exclude: ["description"] } }],
     });
 
