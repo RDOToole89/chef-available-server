@@ -38,7 +38,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/profile", async (req, res, next) => {
+router.put("/profile", async (req, res, next) => {
   const {
     profileId,
     userId,
@@ -48,6 +48,8 @@ router.patch("/profile", async (req, res, next) => {
     city,
     description,
   } = req.body;
+
+  console.log("BODY", req.body);
 
   const userToUpdate = await User.findByPk(userId);
   const profileToUpdate = await Profile.findByPk(profileId);
@@ -63,8 +65,8 @@ router.patch("/profile", async (req, res, next) => {
         ...profileToUpdate,
         yearsOfExperience: parseInt(yearsOfExperience),
         hourlyRate: parseFloat(hourlyRate),
-        position,
-        description,
+        position: position,
+        description: description,
       });
 
       res.json({ user: updatedUser, profile: updatedProfile });
