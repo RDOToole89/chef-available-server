@@ -21,8 +21,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-module.exports = router;
-
 router.get("/:id", async (req, res, next) => {
   const id = req.params;
 
@@ -40,9 +38,42 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/:id/profile", async (req, res, next) => {
-  try {
-  } catch (e) {
-    return res.status(400).send({ message: "User not found" });
+router.put("/profile", async (req, res, next) => {
+  const {
+    profileId,
+    userId,
+    yearsOfExperience,
+    hourlyRate,
+    position,
+    city,
+    description,
+  } = req.body;
+
+  console.log("BODY", req.body);
+
+  const userToUpdate = await User.findByPk(userId);
+  const profileToUpdate = await Profile.findByPk(profileId);
+
+  if (userToUpdate && profileToUpdate) {
+    try {
+      const updatedUser = await userToUpdate.update({
+        ...userToUpdate,
+        city: city,
+      });
+
+      const updatedProfile = await profileToUpdate.update({
+        ...profileToUpdate,
+        yearsOfExperience: parseInt(yearsOfExperience),
+        hourlyRate: parseFloat(hourlyRate),
+        position: position,
+        description: description,
+      });
+
+      res.json({ user: updatedUser, profile: updatedProfile });
+    } catch (e) {
+      return res.status(400).send({ message: "User not found" });
+    }
   }
 });
+
+module.exports = router;
