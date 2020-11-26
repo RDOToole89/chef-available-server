@@ -80,12 +80,28 @@ router.put("/profile", async (req, res, next) => {
 router.post("/profile/availability", async (req, res, next) => {
   const { availableDate, profileId } = req.body;
 
-  console.log(req.body);
-
   try {
     const newAvailableDate = await AvailableDate.create({ profileId, date: availableDate });
     console.log(newAvailableDate);
     res.json(newAvailableDate);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.delete("/profile/availability", async (req, res, next) => {
+  const { availabledate, profileid } = req.headers;
+
+  try {
+    const dateToDelete = await AvailableDate.findOne({
+      where: { profileId: profileid, date: availabledate },
+    });
+
+    const deletedDate = await dateToDelete.destroy();
+
+    if (deletedDate) {
+      return res.json(`Requested date: ${availabledate} has successfully been deleted`);
+    }
   } catch (e) {
     next(e);
   }
