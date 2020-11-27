@@ -98,7 +98,10 @@ router.get("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
 
   try {
-    const messages = await Message.findAll({ where: { recipientUserId: id } });
+    const messages = await Message.findAll({
+      where: { recipientUserId: id },
+      include: { model: User, attributes: ["id", "firstName", "lastName", "email"] },
+    });
 
     res.json(messages);
   } catch (e) {
