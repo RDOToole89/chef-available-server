@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      profile.hasMany(models.availableDate);
       profile.belongsTo(models.user);
       profile.belongsToMany(models.specializationTag, {
         through: "userTags",
