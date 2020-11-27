@@ -94,6 +94,18 @@ router.post("/:id/profile/message", async (req, res, next) => {
   }
 });
 
+router.get("/:id/profile/message", async (req, res, next) => {
+  const id = parseInt(req.params.id);
+
+  try {
+    const messages = await Message.findAll({ where: { recipientUserId: id } });
+
+    res.json(messages);
+  } catch (e) {
+    next(e);
+  }
+});
+
 router.post("/profile/availability", async (req, res, next) => {
   const { availableDate, profileId } = req.body;
 
