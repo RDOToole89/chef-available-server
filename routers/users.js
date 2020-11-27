@@ -1,11 +1,10 @@
 const { Router } = require("express");
 const authMiddleware = require("../auth/middleware");
 const AvailableDate = require("../models/").availableDate;
+const Message = require("../models/").message;
 const User = require("../models/").user;
 const Profile = require("../models/").profile;
 const SpecializationTag = require("../models/").specializationTag;
-
-console.log("AVAILABLE DATE", AvailableDate);
 
 const router = new Router();
 
@@ -74,6 +73,24 @@ router.put("/profile", async (req, res, next) => {
     } catch (e) {
       return res.status(400).send({ message: "User not found" });
     }
+  }
+});
+
+router.post("/:id/profile/message", async (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const { title, content, recipientUserId } = req.body;
+
+  try {
+    const createMessage = await Message.create({
+      userId: id,
+      title,
+      content,
+      recipientUserId,
+    });
+
+    res.json(createMessage);
+  } catch (e) {
+    next(e);
   }
 });
 
