@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       content: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
       recipientUserId: DataTypes.INTEGER,
+      new: DataTypes.BOOLEAN,
     },
     {
       sequelize,
