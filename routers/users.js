@@ -2,6 +2,7 @@ const { Router } = require("express");
 const authMiddleware = require("../auth/middleware");
 const AvailableDate = require("../models/").availableDate;
 const Message = require("../models/").message;
+const Booking = require("../models/").booking;
 const User = require("../models/").user;
 const Profile = require("../models/").profile;
 const SpecializationTag = require("../models/").specializationTag;
@@ -80,16 +81,33 @@ router.post("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
   const { title, content, recipientUserId, date } = req.body;
   console.log("WHAT IS REQ.BODY?", req.body);
+
   try {
     const createMessage = await Message.create({
       userId: id,
       title,
       content,
       recipientUserId,
-      date: date,
+      date: date || null,
     });
 
-    res.json(createMessage);
+    if (date) {
+      try {
+        const newBooking = await Booking.create({
+          messageId: createMessage.id,
+          userId: id,
+          profileId: recipientUserId,
+          accepted: false,
+          date,
+        });
+
+        // res.json(newBooking);
+      } catch (e) {
+        next(e);
+      }
+    }
+
+    res.json({ newMessage: createMessage });
   } catch (e) {
     next(e);
   }

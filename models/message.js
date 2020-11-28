@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       message.belongsTo(models.user);
+      message.hasOne(models.booking);
     }
   }
   message.init(

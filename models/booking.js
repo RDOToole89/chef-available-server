@@ -9,12 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       booking.belongsTo(models.user);
+      booking.belongsTo(models.message);
     }
   }
   booking.init(
     {
       userId: DataTypes.INTEGER,
       profileId: DataTypes.INTEGER,
+      messageId: DataTypes.INTEGER,
       accepted: { type: DataTypes.BOOLEAN, defaultValue: false },
       date: { type: DataTypes.DATEONLY },
     },

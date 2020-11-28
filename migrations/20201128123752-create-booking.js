@@ -26,6 +26,13 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
+      messageId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "messages",
+          key: "id",
+        },
+      },
       accepted: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
