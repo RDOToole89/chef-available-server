@@ -12,7 +12,7 @@ router.put("/", async (req, res, next) => {
 
     const updatedBooking = await bookingToUpdate.update({
       ...bookingToUpdate,
-      accepted: true,
+      accepted: !bookingToUpdate.accepted,
     });
 
     console.log(updatedBooking);
