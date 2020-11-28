@@ -88,7 +88,7 @@ router.post("/:id/profile/message", async (req, res, next) => {
       title,
       content,
       recipientUserId,
-      date: date || null,
+      date: !date ? null : date,
     });
 
     if (date) {
@@ -100,8 +100,6 @@ router.post("/:id/profile/message", async (req, res, next) => {
           accepted: false,
           date,
         });
-
-        // res.json(newBooking);
       } catch (e) {
         next(e);
       }
