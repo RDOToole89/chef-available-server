@@ -78,14 +78,15 @@ router.put("/profile", async (req, res, next) => {
 
 router.post("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
-  const { title, content, recipientUserId } = req.body;
-
+  const { title, content, recipientUserId, date } = req.body;
+  console.log("WHAT IS REQ.BODY?", req.body);
   try {
     const createMessage = await Message.create({
       userId: id,
       title,
       content,
       recipientUserId,
+      date: date,
     });
 
     res.json(createMessage);
