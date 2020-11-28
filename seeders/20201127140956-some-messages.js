@@ -12,6 +12,7 @@ module.exports = {
           new: true,
           content:
             "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
+          date: new Date("2020-11-29"),
           createdAt: new Date("2020-11-29"),
           updatedAt: new Date(),
         },
@@ -22,6 +23,7 @@ module.exports = {
           new: true,
           content:
             "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
+          date: new Date("2020-12-03"),
           createdAt: new Date("2020-12-03"),
           updatedAt: new Date(),
         },
@@ -32,6 +34,7 @@ module.exports = {
           new: false,
           content:
             "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
+          date: new Date("2020-12-10"),
           createdAt: new Date("2020-12-10"),
           updatedAt: new Date(),
         },
@@ -42,6 +45,7 @@ module.exports = {
           title: "Booking for 14 December",
           content:
             "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
+          date: new Date("2020-12-14"),
           createdAt: new Date("2020-12-14"),
           updatedAt: new Date(),
         },
@@ -51,6 +55,7 @@ module.exports = {
           title: "Booking for 18 December",
           content:
             "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
+          date: new Date("2020-12-18"),
           createdAt: new Date("2020-12-18"),
           updatedAt: new Date(),
         },

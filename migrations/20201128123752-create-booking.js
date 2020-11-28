@@ -1,18 +1,12 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("messages", {
+    await queryInterface.createTable("bookings", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      title: {
-        type: Sequelize.STRING,
-      },
-      content: {
-        type: Sequelize.TEXT,
       },
       userId: {
         type: Sequelize.INTEGER,
@@ -23,18 +17,18 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      recipientUserId: {
+      profileId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "users",
+          model: "profiles",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      new: {
+      accepted: {
         type: Sequelize.BOOLEAN,
-        defaultValue: true,
+        defaultValue: false,
       },
       date: {
         type: Sequelize.DATEONLY,
@@ -50,6 +44,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("messages");
+    await queryInterface.dropTable("bookings");
   },
 };
