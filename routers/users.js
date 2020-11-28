@@ -2,6 +2,7 @@ const { Router } = require("express");
 const authMiddleware = require("../auth/middleware");
 const AvailableDate = require("../models/").availableDate;
 const Message = require("../models/").message;
+const Booking = require("../models/").booking;
 const User = require("../models/").user;
 const Profile = require("../models/").profile;
 const SpecializationTag = require("../models/").specializationTag;
@@ -78,7 +79,8 @@ router.put("/profile", async (req, res, next) => {
 
 router.post("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
-  const { title, content, recipientUserId } = req.body;
+  const { title, content, recipientUserId, date } = req.body;
+  console.log("WHAT IS REQ.BODY?", req.body);
 
   try {
     const createMessage = await Message.create({
@@ -86,9 +88,24 @@ router.post("/:id/profile/message", async (req, res, next) => {
       title,
       content,
       recipientUserId,
+      date: !date ? null : date,
     });
 
-    res.json(createMessage);
+    if (date) {
+      try {
+        const newBooking = await Booking.create({
+          messageId: createMessage.id,
+          userId: id,
+          profileId: recipientUserId,
+          accepted: false,
+          date,
+        });
+      } catch (e) {
+        next(e);
+      }
+    }
+
+    res.json({ newMessage: createMessage });
   } catch (e) {
     next(e);
   }
@@ -100,7 +117,10 @@ router.get("/:id/profile/message", async (req, res, next) => {
   try {
     const messages = await Message.findAll({
       where: { recipientUserId: id },
-      include: { model: User, attributes: ["id", "firstName", "lastName", "email"] },
+      include: [
+        { model: User, attributes: ["id", "firstName", "lastName", "email"] },
+        { model: Booking },
+      ],
     });
 
     res.json(messages);

@@ -3,6 +3,7 @@ const express = require("express");
 const authRouter = require("./routers/authorization");
 const userRouter = require("./routers/users");
 const tagsRouter = require("./routers/tags");
+const bookingsRouter = require("./routers/bookings");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -19,5 +20,6 @@ app.get("/", (req, res, next) => {
 app.use("/", authRouter);
 app.use("/users", userRouter);
 app.use("/tags", tagsRouter);
+app.use("/bookings", bookingsRouter);
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
