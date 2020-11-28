@@ -51,6 +51,7 @@ module.exports = {
         },
         {
           userId: 2,
+          new: false,
           recipientUserId: 1,
           title: "Booking for 18 December",
           content:

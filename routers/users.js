@@ -134,7 +134,7 @@ router.post("/profile/availability", async (req, res, next) => {
 
   try {
     const newAvailableDate = await AvailableDate.create({ profileId, date: availableDate });
-    console.log(newAvailableDate);
+
     res.json(newAvailableDate);
   } catch (e) {
     next(e);

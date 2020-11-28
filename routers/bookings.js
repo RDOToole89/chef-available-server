@@ -4,13 +4,19 @@ const Booking = require("../models/").booking;
 
 const router = new Router();
 
-router.post("/", async (req, res, next) => {
-  const { userId, profileId, date } = req.body;
+router.put("/", async (req, res, next) => {
+  const { id } = req.body;
 
   try {
-    const newBooking = await Booking.create({ userId, profileId, accepted: true, date });
+    const bookingToUpdate = await Booking.findByPk(id);
 
-    res.json(newBooking);
+    const updatedBooking = await bookingToUpdate.update({
+      ...bookingToUpdate,
+      accepted: true,
+    });
+
+    console.log(updatedBooking);
+    res.json(updatedBooking);
   } catch (e) {
     next(e);
   }
