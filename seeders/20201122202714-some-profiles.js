@@ -35,7 +35,7 @@ module.exports = {
           imgUrl: "https://artzycafe.com/wp-content/uploads/2020/05/Vocations-in-Cooking.jpg",
           position: "Sous Chef",
           hourlyRate: 138.5,
-          yearsOfExperience: 20,
+          yearsOfExperience: 120,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
