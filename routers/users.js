@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const authMiddleware = require("../auth/middleware");
+const { cloudinary } = require("../config/cloudinary");
 const AvailableDate = require("../models/").availableDate;
 const Message = require("../models/").message;
 const Booking = require("../models/").booking;
@@ -74,6 +75,38 @@ router.put("/profile", async (req, res, next) => {
     } catch (e) {
       return res.status(400).send({ message: "User not found" });
     }
+  }
+});
+
+router.post("/profile/upload", async (req, res, next) => {
+  const fileString = req.body.data;
+
+  try {
+    const uploadResponse = await cloudinary.uploader.upload(fileString, {
+      upload_preset: "dev_setups",
+    });
+
+    if (uploadResponse) {
+      try {
+        const profileToUpdate = await Profile.findByPk(1);
+
+        if (profileToUpdate) {
+          try {
+            await profileToUpdate.update({ ...profileToUpdate, imgUrl: uploadResponse.url });
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    console.log("UPLOADRESPONSE", uploadResponse);
+    res.json({ message: "File uploaded!" });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Something went wrong, file was not succesfully uploaded" });
   }
 });
 

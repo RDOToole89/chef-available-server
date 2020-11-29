@@ -1,5 +1,6 @@
 const cors = require("cors");
 const express = require("express");
+const { cloudinary } = require("./config/cloudinary");
 const authRouter = require("./routers/authorization");
 const userRouter = require("./routers/users");
 const tagsRouter = require("./routers/tags");
@@ -8,8 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // MiddleWares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cors());
 
 app.get("/", (req, res, next) => {
