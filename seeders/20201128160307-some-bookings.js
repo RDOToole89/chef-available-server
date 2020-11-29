@@ -11,7 +11,7 @@ module.exports = {
           messageId: 1,
           accepted: false,
           date: new Date("2020-11-29"),
-          createdAt: new Date("2020-11-29"),
+          createdAt: new Date("2020-11-02"),
           updatedAt: new Date(),
         },
         {
@@ -20,7 +20,7 @@ module.exports = {
           messageId: 2,
           accepted: false,
           date: new Date("2020-12-03"),
-          createdAt: new Date("2020-12-03"),
+          createdAt: new Date("2020-11-07"),
           updatedAt: new Date(),
         },
         {
@@ -29,7 +29,7 @@ module.exports = {
           messageId: 3,
           accepted: false,
           date: new Date("2020-12-10"),
-          createdAt: new Date("2020-12-10"),
+          createdAt: new Date("2020-12-01"),
           updatedAt: new Date(),
         },
         {
@@ -38,7 +38,7 @@ module.exports = {
           messageId: 4,
           accepted: false,
           date: new Date("2020-12-14"),
-          createdAt: new Date("2020-12-14"),
+          createdAt: new Date("2020-11-04"),
           updatedAt: new Date(),
         },
         {
@@ -47,7 +47,7 @@ module.exports = {
           messageId: 5,
           accepted: true,
           date: new Date("2020-12-18"),
-          createdAt: new Date("2020-12-18"),
+          createdAt: new Date("2020-12-06"),
           updatedAt: new Date(),
         },
       ],
