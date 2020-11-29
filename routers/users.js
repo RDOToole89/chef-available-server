@@ -53,28 +53,32 @@ router.put("/profile", async (req, res, next) => {
     description,
   } = req.body;
 
-  const userToUpdate = await User.findByPk(userId);
-  const profileToUpdate = await Profile.findByPk(profileId);
+  try {
+    const userToUpdate = await User.findByPk(userId);
+    const profileToUpdate = await Profile.findByPk(profileId);
 
-  if (userToUpdate && profileToUpdate) {
-    try {
-      const updatedUser = await userToUpdate.update({
-        ...userToUpdate,
-        city: city,
-      });
+    if (userToUpdate && profileToUpdate) {
+      try {
+        const updatedUser = await userToUpdate.update({
+          ...userToUpdate,
+          city: city,
+        });
 
-      const updatedProfile = await profileToUpdate.update({
-        ...profileToUpdate,
-        yearsOfExperience: parseInt(yearsOfExperience),
-        hourlyRate: parseFloat(hourlyRate),
-        position: position,
-        description: description,
-      });
+        const updatedProfile = await profileToUpdate.update({
+          ...profileToUpdate,
+          yearsOfExperience: parseInt(yearsOfExperience),
+          hourlyRate: parseFloat(hourlyRate),
+          position: position,
+          description: description,
+        });
 
-      res.json({ user: updatedUser, profile: updatedProfile });
-    } catch (e) {
-      return res.status(400).send({ message: "User not found" });
+        res.json({ user: updatedUser, profile: updatedProfile });
+      } catch (e) {
+        return res.status(400).send({ message: "User not found" });
+      }
     }
+  } catch (e) {
+    next(e);
   }
 });
 
@@ -102,7 +106,6 @@ router.post("/profile/upload", async (req, res, next) => {
       }
     }
 
-    console.log("UPLOADRESPONSE", uploadResponse);
     res.json({ message: "File uploaded!" });
   } catch (e) {
     console.log(e);
@@ -113,7 +116,6 @@ router.post("/profile/upload", async (req, res, next) => {
 router.post("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
   const { title, content, recipientUserId, date } = req.body;
-  console.log("WHAT IS REQ.BODY?", req.body);
 
   try {
     const createMessage = await Message.create({
