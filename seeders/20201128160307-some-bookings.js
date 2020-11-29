@@ -15,7 +15,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          userId: 2,
+          userId: 3,
           profileId: 1,
           messageId: 2,
           accepted: false,
@@ -24,7 +24,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          userId: 2,
+          userId: 4,
           profileId: 1,
           messageId: 3,
           accepted: false,
@@ -33,7 +33,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          userId: 2,
+          userId: 3,
           profileId: 1,
           messageId: 4,
           accepted: false,
