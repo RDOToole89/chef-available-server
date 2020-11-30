@@ -164,6 +164,31 @@ router.post("/:id/profile/message", async (req, res, next) => {
   }
 });
 
+router.put("/:id/profile/message/:messageId", async (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const messageId = parseInt(req.params.messageId);
+
+  try {
+    const messageToUpdate = await Message.findByPk(messageId);
+
+    if (messageToUpdate) {
+      try {
+        const updatedMessage = await messageToUpdate.update({
+          ...messageToUpdate,
+          new: !messageToUpdate.new,
+        });
+        if (updatedMessage) {
+          return res.json(`Message with id: ${messageId} has successfully been updated`);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  } catch (e) {
+    next(e);
+  }
+});
+
 router.delete("/:id/profile/message/:messageId", async (req, res, next) => {
   const id = parseInt(req.params.id);
   const messageId = parseInt(req.params.messageId);
