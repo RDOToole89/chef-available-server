@@ -32,6 +32,8 @@ module.exports = {
           model: "messages",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       accepted: {
         type: Sequelize.BOOLEAN,

@@ -113,6 +113,24 @@ router.post("/profile/upload", async (req, res, next) => {
   }
 });
 
+router.get("/:id/profile/message", async (req, res, next) => {
+  const id = parseInt(req.params.id);
+
+  try {
+    const messages = await Message.findAll({
+      where: { recipientUserId: id },
+      include: [
+        { model: User, attributes: ["id", "firstName", "lastName", "email"] },
+        { model: Booking },
+      ],
+    });
+
+    res.json(messages);
+  } catch (e) {
+    next(e);
+  }
+});
+
 router.post("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
   const { title, content, recipientUserId, date } = req.body;
@@ -146,19 +164,23 @@ router.post("/:id/profile/message", async (req, res, next) => {
   }
 });
 
-router.get("/:id/profile/message", async (req, res, next) => {
+router.delete("/:id/profile/message/:messageId", async (req, res, next) => {
   const id = parseInt(req.params.id);
+  const messageId = parseInt(req.params.messageId);
 
   try {
-    const messages = await Message.findAll({
-      where: { recipientUserId: id },
-      include: [
-        { model: User, attributes: ["id", "firstName", "lastName", "email"] },
-        { model: Booking },
-      ],
-    });
+    const messageToDelete = await Message.findByPk(messageId);
 
-    res.json(messages);
+    if (messageToDelete) {
+      try {
+        const deletedMessage = await messageToDelete.destroy();
+        if (deletedMessage) {
+          return res.json(`Requested message: ${deletedMessage} has successfully been deleted`);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
   } catch (e) {
     next(e);
   }
