@@ -175,7 +175,7 @@ router.put("/:id/profile/message/:messageId", async (req, res, next) => {
       try {
         const updatedMessage = await messageToUpdate.update({
           ...messageToUpdate,
-          new: !messageToUpdate.new,
+          new: false,
         });
         if (updatedMessage) {
           return res.json(`Message with id: ${messageId} has successfully been updated`);
