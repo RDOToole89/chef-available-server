@@ -217,11 +217,29 @@ router.get("/:id/profile/reviews", async (req, res, next) => {
   try {
     const reviews = await Reviews.findAll({
       where: { profileId: id },
-      include: [{ model: User, attributes: ["id", "firstName", "lastName", "email"] }],
+      include: [
+        { model: User, attributes: ["id", "firstName", "lastName", "email", "businessName"] },
+      ],
     });
 
     if (reviews) {
       res.json(reviews);
+    }
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post("/:id/profile/reviews", async (req, res, next) => {
+  const { title, content, userId, reviewScore } = req.body;
+
+  const id = parseInt(req.params.id);
+
+  try {
+    const newReview = await Reviews.create({ profileId: id, title, content, userId, reviewScore });
+
+    if (newReview) {
+      res.json(newReview);
     }
   } catch (e) {
     next(e);
