@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       reviewScore: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       userId: {
         type: Sequelize.INTEGER,

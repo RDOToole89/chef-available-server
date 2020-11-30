@@ -233,6 +233,8 @@ router.get("/:id/profile/reviews", async (req, res, next) => {
 router.post("/:id/profile/reviews", async (req, res, next) => {
   const { title, content, userId, reviewScore } = req.body;
 
+  console.log("WHATS IN REQ.BODY", req.body);
+
   const id = parseInt(req.params.id);
 
   try {
