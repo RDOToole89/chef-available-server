@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       profile.hasMany(models.availableDate);
+      profile.hasMany(models.profileReview);
       profile.belongsTo(models.user);
       profile.belongsToMany(models.specializationTag, {
         through: "userTags",

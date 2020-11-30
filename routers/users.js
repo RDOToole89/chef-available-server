@@ -4,6 +4,7 @@ const { cloudinary } = require("../config/cloudinary");
 const AvailableDate = require("../models/").availableDate;
 const Message = require("../models/").message;
 const Booking = require("../models/").booking;
+const Reviews = require("../models/").profileReview;
 const User = require("../models/").user;
 const Profile = require("../models/").profile;
 const SpecializationTag = require("../models/").specializationTag;
@@ -205,6 +206,22 @@ router.delete("/:id/profile/message/:messageId", async (req, res, next) => {
       } catch (e) {
         console.log(e);
       }
+    }
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get("/:id/profile/reviews", async (req, res, next) => {
+  const id = parseInt(req.params.id);
+  try {
+    const reviews = await Reviews.findAll({
+      where: { profileId: id },
+      include: [{ model: User, attributes: ["id", "firstName", "lastName", "email"] }],
+    });
+
+    if (reviews) {
+      res.json(reviews);
     }
   } catch (e) {
     next(e);
