@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const authMiddleware = require("../auth/middleware");
+const booking = require("../models/booking");
 const Message = require("../models/").message;
 const Booking = require("../models/").booking;
 const User = require("../models/").user;
@@ -38,6 +39,28 @@ router.put("/", async (req, res, next) => {
 
     console.log(updatedBooking);
     res.json(updatedBooking);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const bookingToDelete = await Booking.findByPk(id);
+
+    if (bookingToDelete) {
+      try {
+        const deletedBooking = await bookingToDelete.destroy();
+
+        if (deletedBooking) {
+          res.status(200).send(`Booking with id: ${id} has successfully been deleted`);
+        }
+      } catch (e) {
+        next(e);
+      }
+    }
   } catch (e) {
     next(e);
   }
