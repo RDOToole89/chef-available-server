@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   specializationTag.init(
     {
-      tagName: DataTypes.STRING,
+      tagName: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,

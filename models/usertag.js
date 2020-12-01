@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   userTag.init(
     {
-      profileId: DataTypes.INTEGER,
-      specializationTagId: DataTypes.INTEGER,
+      profileId: { type: DataTypes.INTEGER, allowNull: false },
+      specializationTagId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,

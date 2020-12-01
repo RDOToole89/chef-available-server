@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   booking.init(
     {
-      userId: DataTypes.INTEGER,
-      profileId: DataTypes.INTEGER,
-      messageId: DataTypes.INTEGER,
+      userId: { type: DataTypes.INTEGER, allowNull: false },
+      profileId: { type: DataTypes.INTEGER, allowNull: false },
+      messageId: { type: DataTypes.INTEGER, allowNull: false },
       accepted: { type: DataTypes.BOOLEAN, defaultValue: false },
       date: { type: DataTypes.DATEONLY },
     },

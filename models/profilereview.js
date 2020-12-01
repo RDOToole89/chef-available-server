@@ -16,9 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       title: DataTypes.STRING,
       content: DataTypes.TEXT,
-      reviewScore: DataTypes.FLOAT,
-      userId: DataTypes.INTEGER,
-      profileId: DataTypes.INTEGER,
+      reviewScore: { type: DataTypes.FLOAT, allowNull: false },
+      userId: { type: DataTypes.INTEGER, allowNull: false },
+      profileId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,

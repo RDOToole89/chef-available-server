@@ -15,6 +15,7 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       userId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "users",
@@ -24,6 +25,7 @@ module.exports = {
         onDelete: "CASCADE",
       },
       recipientUserId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "users",

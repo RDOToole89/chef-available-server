@@ -15,20 +15,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   user.init(
     {
-      firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
-      userType: DataTypes.STRING,
-      businessName: DataTypes.STRING,
+      firstName: { type: DataTypes.STRING, allowNull: false },
+      lastName: { type: DataTypes.STRING, allowNull: false },
+      userType: { type: DataTypes.STRING, allowNull: false },
+      businessName: { type: DataTypes.STRING, allowNull: false },
       email: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
       },
-      password: DataTypes.STRING,
-      dateOfBirth: DataTypes.DATEONLY,
-      address: DataTypes.STRING,
-      city: DataTypes.STRING,
-      postalCode: DataTypes.STRING,
+      password: { type: DataTypes.STRING, allowNull: false },
+      dateOfBirth: { type: DataTypes.DATEONLY, allowNull: false },
+      address: { type: DataTypes.STRING, allowNull: false },
+      city: { type: DataTypes.STRING, allowNull: false },
+      postalCode: { type: DataTypes.STRING, allowNull: false },
       isAdmin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,

@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   availableDate.init(
     {
-      profileId: DataTypes.INTEGER,
-      date: DataTypes.DATEONLY,
+      profileId: { type: DataTypes.INTEGER, allowNull: false },
+      date: { type: DataTypes.DATEONLY, allowNull: false },
     },
     {
       sequelize,

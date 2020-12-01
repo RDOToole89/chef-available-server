@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       profileId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "profiles",
@@ -18,6 +19,7 @@ module.exports = {
         onDelete: "CASCADE",
       },
       specializationTagId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "specializationTags",
