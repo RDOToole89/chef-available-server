@@ -1,27 +1,18 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("profiles", {
+    await queryInterface.createTable("messages", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      description: {
+      title: {
+        type: Sequelize.STRING,
+      },
+      content: {
         type: Sequelize.TEXT,
-      },
-      position: {
-        type: Sequelize.STRING,
-      },
-      imgUrl: {
-        type: Sequelize.STRING,
-      },
-      hourlyRate: {
-        type: Sequelize.FLOAT,
-      },
-      yearsOfExperience: {
-        type: Sequelize.INTEGER,
       },
       userId: {
         allowNull: false,
@@ -31,7 +22,24 @@ module.exports = {
           key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+        onDelete: "CASCADE",
+      },
+      recipientUserId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      new: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
+      date: {
+        type: Sequelize.DATEONLY,
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +52,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("profiles");
+    await queryInterface.dropTable("messages");
   },
 };

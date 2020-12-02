@@ -8,13 +8,20 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      profile.hasMany(models.availableDate);
+      profile.hasMany(models.profileReview);
       profile.belongsTo(models.user);
+      profile.belongsToMany(models.specializationTag, {
+        through: "userTags",
+        foreignKey: "profileId",
+      });
     }
   }
   profile.init(
     {
       description: DataTypes.TEXT,
       imgUrl: DataTypes.STRING,
+      position: DataTypes.STRING,
       hourlyRate: DataTypes.FLOAT,
       yearsOfExperience: DataTypes.INTEGER,
       userId: { type: DataTypes.INTEGER, allowNull: false },

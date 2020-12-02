@@ -3,6 +3,7 @@ const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
+const Profile = require("../models/").profile;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -23,12 +24,8 @@ router.post("/login", async (req, res, next) => {
       });
     }
 
-    // if (user.accountBlocked) {
-    //   return res.status(400).send({ message: "User with specified account has been blocked." });
-    // }
-
     delete user.dataValues["password"]; // don't send back the password hash
-    const token = toJWT({ userId: user.id });
+    const token = toJWT({ userId: user.id, userType: user.userType });
     return res.status(200).send({ token, ...user.dataValues });
   } catch (error) {
     console.log(error);
@@ -36,18 +33,52 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.post("/signup", async (req, res) => {
-  const { email, password, name } = req.body;
-  if (!email || !password || !name) {
-    return res.status(400).send({ message: "Please provide an email, password and a name" });
+router.post("/signup", async (req, res, next) => {
+  const {
+    firstName,
+    lastName,
+    userType,
+    email,
+    password,
+    postalCode,
+    dateOfBirth,
+    businessName,
+    address,
+  } = req.body;
+
+  if (
+    !email ||
+    !password ||
+    !firstName ||
+    !lastName ||
+    !postalCode ||
+    !dateOfBirth ||
+    !businessName ||
+    !address ||
+    !userType
+  ) {
+    return res.status(400).send({ message: "Please fill out all fields on the signup form" });
   }
 
   try {
     const newUser = await User.create({
-      email,
+      ...req.body,
       password: bcrypt.hashSync(password, SALT_ROUNDS),
-      name,
     });
+
+    if (newUser) {
+      try {
+        const newProfile = await Profile.create({
+          description: `Add a description to stand out to employers...`,
+          imgUrl: "https://www.modernmeal.com/assets/default-profile-avatar.png",
+          hourlyRate: 0,
+          yearsOfExperience: 0,
+          userId: newUser.id,
+        });
+      } catch (e) {
+        next(e);
+      }
+    }
 
     delete newUser.dataValues["password"]; // don't send back the password hash
 
