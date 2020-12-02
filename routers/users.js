@@ -8,6 +8,8 @@ const Reviews = require("../models/").profileReview;
 const User = require("../models/").user;
 const Profile = require("../models/").profile;
 const SpecializationTag = require("../models/").specializationTag;
+const UserTag = require("../models/").userTag;
+console.log(UserTag);
 
 const router = new Router();
 
@@ -33,8 +35,17 @@ router.get("/:id", async (req, res, next) => {
     const user = await User.findOne({
       where: id,
       attributes: { exclude: ["password"] },
-      include: [{ model: Profile, include: [SpecializationTag, AvailableDate] }],
+      include: [
+        {
+          model: Profile,
+          include: [
+            { model: SpecializationTag, through: { model: UserTag } },
+            { model: AvailableDate },
+          ],
+        },
+      ],
       // include: [{ model: Profile, attributes: { exclude: ["description"] } }],
+      // include: [{ model: specializationTag, include: [UserTag] }, { model: AvailableDate }],
     });
 
     res.json(user);
