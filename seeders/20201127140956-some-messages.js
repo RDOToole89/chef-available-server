@@ -41,7 +41,7 @@ module.exports = {
         {
           userId: 2,
           recipientUserId: 1,
-          new: false,
+          new: true,
           title: "Booking for 19 December",
           content:
             "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
@@ -51,13 +51,24 @@ module.exports = {
         },
         {
           userId: 2,
-          new: false,
+          new: true,
           recipientUserId: 1,
           title: "Booking for 26 December",
           content:
             "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
           date: new Date("2020-12-26"),
           createdAt: new Date("2020-11-28"),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 2,
+          new: true,
+          recipientUserId: 1,
+          title: "Booking for 29 December",
+          content:
+            "Bacon ipsum dolor amet kevin shoulder t-bone, spare ribs meatloaf hamburger tail turkey buffalo tenderloin ham pork pig. Brisket cow venison chicken spare ribs landjaeger. Ribeye pork chop sausage doner, salami corned beef prosciutto swine spare ribs. Leberkas pork loin venison, picanha sausage salami swine rump turducken.",
+          date: new Date("2020-12-29"),
+          createdAt: new Date("2020-11-25"),
           updatedAt: new Date(),
         },
       ],

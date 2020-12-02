@@ -43,6 +43,12 @@ module.exports = {
         },
         {
           profileId: 1,
+          date: "2020-12-14",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 1,
           date: "2020-12-15",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -50,6 +56,12 @@ module.exports = {
         {
           profileId: 1,
           date: "2020-12-17",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 1,
+          date: "2020-12-19",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -86,6 +98,12 @@ module.exports = {
         {
           profileId: 1,
           date: "2020-12-28",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 1,
+          date: "2020-12-29",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
