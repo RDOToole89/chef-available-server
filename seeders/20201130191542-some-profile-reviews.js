@@ -142,6 +142,25 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          title: "Loved that everything was covered in a liter of olive oil!",
+          content: "Highly recommended if you're constipated!",
+          reviewScore: 5,
+          userId: 3,
+          profileId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Chef made me see what I actually am, an idiot sandwhich",
+          content:
+            "Great experience, came in to the dining hall got cursed at and the mash thrown in my face. Great flavours.",
+          reviewScore: 4,
+          userId: 2,
+          profileId: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

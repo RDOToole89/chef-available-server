@@ -75,6 +75,36 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          tagName: "Wanker",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Tosser",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Olive Oil Enthusiast",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Pottymouth",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Fuck",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Idiot Sandwhich",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

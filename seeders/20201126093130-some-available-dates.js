@@ -270,6 +270,30 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          profileId: 5,
+          date: "2020-12-15",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 5,
+          date: "2020-12-15",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 6,
+          date: "2020-12-07",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 6,
+          date: "2020-12-17",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           profileId: 2,
           date: "2020-01-06",
           createdAt: new Date(),

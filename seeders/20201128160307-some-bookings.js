@@ -33,6 +33,15 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          userId: 5,
+          profileId: 1,
+          messageId: 3,
+          accepted: false,
+          date: new Date("2020-12-12"),
+          createdAt: new Date("2020-12-01"),
+          updatedAt: new Date(),
+        },
+        {
           userId: 3,
           profileId: 1,
           messageId: 4,

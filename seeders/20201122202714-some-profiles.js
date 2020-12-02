@@ -49,6 +49,30 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: 5,
+          description:
+            "Jamie Oliver, (born May 27, 1975, Clavering, Essex, England), British chef who achieved worldwide fame with his television shows The Naked Chef (1999) and Jamie Oliver’s Food Revolution (2010–11) and as author of a number of cookbooks with a variety of culinary themes.",
+          imgUrl:
+            "https://res.cloudinary.com/dqrgx8g71/image/upload/v1606921607/dev_setups/ftnydipfpmsqqtd8hbbe.webp",
+          position: "Total wanker",
+          hourlyRate: 12000.39,
+          yearsOfExperience: 30,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 6,
+          description:
+            "Gordon James Ramsay OBE (born 8 November 1966) is a British chef, restaurateur, writer, and television personality. He was born in Johnstone, Scotland, and raised in Stratford-upon-Avon, England. His restaurants have been awarded 16 Michelin stars in total and currently hold a total of seven.",
+          imgUrl:
+            "https://cdn1.i-scmp.com/sites/default/files/styles/1200x800/public/images/methode/2018/11/09/4189f666-e0cb-11e8-829d-1199cf0acfc4_1280x720_104300.JPG?itok=P1lTqIH3",
+          position: "None of your fucking business",
+          hourlyRate: 30001.21,
+          yearsOfExperience: 120,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
