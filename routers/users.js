@@ -134,7 +134,9 @@ router.get("/:id/profile/message", async (req, res, next) => {
 
 router.post("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
-  const { title, content, recipientUserId, date } = req.body;
+  const { title, content, recipientUserId, date, isReply } = req.body;
+
+  console.log("REPLYBOOL", isReply);
 
   try {
     const createMessage = await Message.create({
@@ -145,7 +147,7 @@ router.post("/:id/profile/message", async (req, res, next) => {
       date: !date ? null : date,
     });
 
-    if (date) {
+    if (date && !isReply) {
       try {
         const newBooking = await Booking.create({
           messageId: createMessage.id,
