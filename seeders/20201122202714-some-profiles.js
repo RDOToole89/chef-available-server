@@ -39,6 +39,16 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: 4,
+          description: "Dave succesful guitar player and business owner.",
+          imgUrl: "",
+          position: "Restaurant owner",
+          hourlyRate: 138.5,
+          yearsOfExperience: 120,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

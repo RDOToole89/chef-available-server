@@ -13,9 +13,11 @@ module.exports = {
       },
       position: {
         type: Sequelize.STRING,
+        defaultValue: "New member",
       },
       imgUrl: {
         type: Sequelize.STRING,
+        defaultValue: "https://c.files.bbci.co.uk/10E5A/production/_105901296_male.jpg",
       },
       hourlyRate: {
         type: Sequelize.FLOAT,

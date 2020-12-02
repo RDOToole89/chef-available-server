@@ -93,6 +93,8 @@ router.put("/profile", async (req, res, next) => {
 
 router.post("/profile/upload", async (req, res, next) => {
   const fileString = req.body.data;
+  const { userId } = req.body;
+  console.log(userId);
 
   try {
     const uploadResponse = await cloudinary.uploader.upload(fileString, {
@@ -101,11 +103,19 @@ router.post("/profile/upload", async (req, res, next) => {
 
     if (uploadResponse) {
       try {
-        const profileToUpdate = await Profile.findByPk(1);
+        const profileToUpdate = await Profile.findByPk(userId);
+        console.log("PROFILE", profileToUpdate);
 
         if (profileToUpdate) {
           try {
-            await profileToUpdate.update({ ...profileToUpdate, imgUrl: uploadResponse.url });
+            const updatedProfile = await profileToUpdate.update({
+              ...profileToUpdate,
+              imgUrl: uploadResponse.url,
+            });
+
+            if (updatedProfile) {
+              return res.status(200).send("Profile picture uploaded");
+            }
           } catch (e) {
             console.log(e);
           }
@@ -114,8 +124,6 @@ router.post("/profile/upload", async (req, res, next) => {
         console.log(e);
       }
     }
-
-    res.json({ message: "File uploaded!" });
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: "Something went wrong, file was not succesfully uploaded" });
@@ -143,8 +151,6 @@ router.get("/:id/profile/message", async (req, res, next) => {
 router.post("/:id/profile/message", async (req, res, next) => {
   const id = parseInt(req.params.id);
   const { title, content, recipientUserId, date, isReply } = req.body;
-
-  console.log("REPLYBOOL", isReply);
 
   try {
     const createMessage = await Message.create({
