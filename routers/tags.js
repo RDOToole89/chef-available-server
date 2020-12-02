@@ -29,7 +29,7 @@ router.delete("/user", async (req, res, next) => {
         const deletedUserTag = await userTagToDelete.destroy();
 
         if (deletedUserTag) {
-          return res.json(`Usertag with id:${tagid} has been removed`);
+          return res.json(deletedUserTag);
         }
       } catch (e) {
         console.log(e);

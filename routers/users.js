@@ -9,7 +9,6 @@ const User = require("../models/").user;
 const Profile = require("../models/").profile;
 const SpecializationTag = require("../models/").specializationTag;
 const UserTag = require("../models/").userTag;
-console.log(UserTag);
 
 const router = new Router();
 
@@ -44,8 +43,6 @@ router.get("/:id", async (req, res, next) => {
           ],
         },
       ],
-      // include: [{ model: Profile, attributes: { exclude: ["description"] } }],
-      // include: [{ model: specializationTag, include: [UserTag] }, { model: AvailableDate }],
     });
 
     res.json(user);
