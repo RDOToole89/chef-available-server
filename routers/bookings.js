@@ -6,15 +6,11 @@ const User = require("../models/").user;
 
 const router = new Router();
 
-router.get("/:id", async (req, res, next) => {
-  // date received / booking date / who requested the booking /
-
+router.get("/:id/:userType", async (req, res, next) => {
   const { id } = req.params;
-  const { userType } = req.body;
+  const { userType } = req.params;
 
-  console.log("REQBODY", req.body);
-
-  if (userType === "chef") {
+  if (userType === "Chef") {
     try {
       const bookings = await Booking.findAll({
         where: { profileId: parseInt(id) },
@@ -26,7 +22,7 @@ router.get("/:id", async (req, res, next) => {
         ],
       });
 
-      res.json(bookings);
+      res.status(200).json(bookings);
     } catch (e) {
       next(e);
     }
@@ -46,7 +42,7 @@ router.get("/:id", async (req, res, next) => {
           where: { id: bookingsNew[i].profileId },
           attributes: ["id", "firstName", "lastName", "businessName", "email"],
         });
-        arrToReturn.push({ ...bookingsNew[i], chef: chef.dataValues });
+        arrToReturn.push({ ...bookingsNew[i], user: chef.dataValues });
       }
 
       res.status(200).json(arrToReturn);
