@@ -1,7 +1,5 @@
 const { Router } = require("express");
 const authMiddleware = require("../auth/middleware");
-const booking = require("../models/booking");
-const Message = require("../models/").message;
 const Booking = require("../models/").booking;
 const AvailableDate = require("../models/").availableDate;
 const User = require("../models/").user;
@@ -12,18 +10,49 @@ router.get("/:id", async (req, res, next) => {
   // date received / booking date / who requested the booking /
 
   const { id } = req.params;
+  const { userType } = req.body;
 
-  try {
-    const bookings = await Booking.findAll({
-      where: { profileId: parseInt(id) },
-      include: [
-        { model: User, attributes: ["id", "firstName", "lastName", "businessName", "email"] },
-      ],
-    });
+  console.log("REQBODY", req.body);
 
-    res.json(bookings);
-  } catch (e) {
-    next(e);
+  if (userType === "chef") {
+    try {
+      const bookings = await Booking.findAll({
+        where: { profileId: parseInt(id) },
+        include: [
+          {
+            model: User,
+            attributes: ["id", "firstName", "lastName", "businessName", "email"],
+          },
+        ],
+      });
+
+      res.json(bookings);
+    } catch (e) {
+      next(e);
+    }
+  } else {
+    try {
+      const bookings = await Booking.findAll({
+        where: { userId: parseInt(id) },
+      });
+
+      const jsonString = JSON.stringify(bookings);
+      const bookingsNew = JSON.parse(jsonString);
+
+      let arrToReturn = [];
+
+      for (let i = 0; i < bookingsNew.length; i++) {
+        const chef = await User.findOne({
+          where: { id: bookingsNew[i].profileId },
+          attributes: ["id", "firstName", "lastName", "businessName", "email"],
+        });
+        arrToReturn.push({ ...bookingsNew[i], chef: chef.dataValues });
+      }
+
+      res.status(200).json(arrToReturn);
+    } catch (e) {
+      next(e);
+    }
   }
 });
 

@@ -42,10 +42,11 @@ module.exports = {
         {
           userId: 4,
           description: "Dave succesful guitar player and business owner.",
-          imgUrl: "",
+          imgUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWXPUbueB-aTfpneyPm9TfNo_OsbOrCTdi2A&usqp=CAU",
           position: "Restaurant owner",
           hourlyRate: 138.5,
-          yearsOfExperience: 120,
+          yearsOfExperience: 1994,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -70,6 +71,17 @@ module.exports = {
           position: "None of your fucking business",
           hourlyRate: 30001.21,
           yearsOfExperience: 120,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 7,
+          description:
+            "Nusret Gökçe, nicknamed Salt Bae, is a Turkish butcher, chef, and restaurateur, who owns Nusr-Et, a chain of luxury steak houses. His technique for preparing and seasoning meat became an Internet meme. ",
+          imgUrl: "https://i.hurimg.com/i/hdn/75/0x0/5dca6ee467b0a90b18fc2743.jpg",
+          position: "Internet Sensation",
+          hourlyRate: 1000.95,
+          yearsOfExperience: 15,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

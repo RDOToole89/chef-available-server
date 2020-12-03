@@ -103,6 +103,22 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          firstName: "Nusret",
+          lastName: "Gökçe",
+          userType: "Chef",
+          email: "saltbae@gmail.com",
+          password: bcrypt.hashSync("test", SALT_ROUNDS),
+          businessName: "Nusr-Et",
+          dateOfBirth: "1983-05-10",
+          address: "Salt Street 213",
+          city: "New York",
+          postalCode: "1032KM",
+          isAdmin: false,
+          isOnline: true,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

@@ -162,6 +162,36 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          profileId: 7,
+          specializationTagId: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 7,
+          specializationTagId: 22,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 7,
+          specializationTagId: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 7,
+          specializationTagId: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          profileId: 7,
+          specializationTagId: 25,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

@@ -96,12 +96,37 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          tagName: "Fuck",
+          tagName: "F***",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagName: "Idiot Sandwhich",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Salt Douche",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Steak",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Butcher",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Turkish",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tagName: "Grill",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

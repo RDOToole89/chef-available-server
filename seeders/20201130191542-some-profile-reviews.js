@@ -26,7 +26,7 @@ module.exports = {
         {
           title: "MEH! chef! C+",
           content: "Food tasted like cardboard, better than my regular chef though.",
-          reviewScore: 3,
+          reviewScore: 4,
           userId: 4,
           profileId: 1,
           createdAt: new Date(),
@@ -44,7 +44,7 @@ module.exports = {
         {
           title: "Horrible chef! F-",
           content: "Food tasted like actual dog crap.",
-          reviewScore: 1,
+          reviewScore: 2,
           userId: 3,
           profileId: 1,
           createdAt: new Date(),
@@ -72,7 +72,7 @@ module.exports = {
         {
           title: "MEH! chef! C+",
           content: "Food tasted like cardboard, better than my regular chef though.",
-          reviewScore: 3,
+          reviewScore: 5,
           userId: 4,
           profileId: 2,
           createdAt: new Date(),
@@ -90,7 +90,7 @@ module.exports = {
         {
           title: "Horrible chef! F-",
           content: "Food tasted like actual dog crap.",
-          reviewScore: 1,
+          reviewScore: 2,
           userId: 3,
           profileId: 2,
           createdAt: new Date(),
@@ -109,7 +109,7 @@ module.exports = {
         {
           title: "Good chef! B+",
           content: "Wowzers this chef makes a great piece of toast!",
-          reviewScore: 4,
+          reviewScore: 3,
           userId: 2,
           profileId: 3,
           createdAt: new Date(),
@@ -118,7 +118,7 @@ module.exports = {
         {
           title: "MEH! chef! C+",
           content: "Food tasted like cardboard, better than my regular chef though.",
-          reviewScore: 3,
+          reviewScore: 5,
           userId: 4,
           profileId: 3,
           createdAt: new Date(),
@@ -136,7 +136,7 @@ module.exports = {
         {
           title: "Horrible chef! F-",
           content: "Food tasted like actual dog crap.",
-          reviewScore: 1,
+          reviewScore: 3,
           userId: 3,
           profileId: 3,
           createdAt: new Date(),
@@ -158,6 +158,15 @@ module.exports = {
           reviewScore: 4,
           userId: 2,
           profileId: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "The salt tasted great!",
+          content: "I am quite salty about the whole experience!",
+          reviewScore: 3,
+          userId: 1,
+          profileId: 7,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
