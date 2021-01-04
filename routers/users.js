@@ -1,39 +1,39 @@
-const { Router } = require("express");
-const authMiddleware = require("../auth/middleware");
-const { cloudinary } = require("../config/cloudinary");
-const AvailableDate = require("../models/").availableDate;
-const Message = require("../models/").message;
-const Booking = require("../models/").booking;
-const Reviews = require("../models/").profileReview;
-const User = require("../models/").user;
-const Profile = require("../models/").profile;
-const SpecializationTag = require("../models/").specializationTag;
-const UserTag = require("../models/").userTag;
+const { Router } = require('express');
+const authMiddleware = require('../auth/middleware');
+const { cloudinary } = require('../config/cloudinary');
+const AvailableDate = require('../models/').availableDate;
+const Message = require('../models/').message;
+const Booking = require('../models/').booking;
+const Reviews = require('../models/').profileReview;
+const User = require('../models/').user;
+const Profile = require('../models/').profile;
+const SpecializationTag = require('../models/').specializationTag;
+const UserTag = require('../models/').userTag;
 
 const router = new Router();
 
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      where: { userType: "Chef" },
-      attributes: { exclude: ["password"] },
+      where: { userType: 'Chef' },
+      attributes: { exclude: ['password'] },
       include: [{ model: Profile, include: [SpecializationTag, Reviews, AvailableDate] }],
     });
 
     res.json(users);
   } catch (e) {
     console.log(e);
-    return res.status(400).send({ message: "Unable to fetch users" });
+    return res.status(400).send({ message: 'Unable to fetch users' });
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   const id = req.params;
 
   try {
     const user = await User.findOne({
       where: id,
-      attributes: { exclude: ["password"] },
+      attributes: { exclude: ['password'] },
       include: [
         {
           model: Profile,
@@ -47,11 +47,11 @@ router.get("/:id", async (req, res, next) => {
 
     res.json(user);
   } catch (e) {
-    return res.status(400).send({ message: "User not found" });
+    return res.status(400).send({ message: 'User not found' });
   }
 });
 
-router.put("/profile", async (req, res, next) => {
+router.put('/profile', async (req, res, next) => {
   const {
     profileId,
     userId,
@@ -83,7 +83,7 @@ router.put("/profile", async (req, res, next) => {
 
         res.json({ user: updatedUser, profile: updatedProfile });
       } catch (e) {
-        return res.status(400).send({ message: "User not found" });
+        return res.status(400).send({ message: 'User not found' });
       }
     }
   } catch (e) {
@@ -91,20 +91,20 @@ router.put("/profile", async (req, res, next) => {
   }
 });
 
-router.post("/profile/upload", async (req, res, next) => {
+router.post('/profile/upload', async (req, res, next) => {
   const fileString = req.body.data;
   const { userId } = req.body;
   console.log(userId);
 
   try {
     const uploadResponse = await cloudinary.uploader.upload(fileString, {
-      upload_preset: "dev_setups",
+      upload_preset: 'dev_setups',
     });
 
     if (uploadResponse) {
       try {
         const profileToUpdate = await Profile.findByPk(userId);
-        console.log("PROFILE", profileToUpdate);
+        console.log('PROFILE', profileToUpdate);
 
         if (profileToUpdate) {
           try {
@@ -114,7 +114,7 @@ router.post("/profile/upload", async (req, res, next) => {
             });
 
             if (updatedProfile) {
-              return res.status(200).send("Profile picture uploaded");
+              return res.status(200).send('Profile picture uploaded');
             }
           } catch (e) {
             console.log(e);
@@ -126,18 +126,18 @@ router.post("/profile/upload", async (req, res, next) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(500).json({ message: "Something went wrong, file was not succesfully uploaded" });
+    res.status(500).json({ message: 'Something went wrong, file was not succesfully uploaded' });
   }
 });
 
-router.get("/:id/profile/message", async (req, res, next) => {
+router.get('/:id/profile/message', async (req, res, next) => {
   const id = parseInt(req.params.id);
 
   try {
     const messages = await Message.findAll({
       where: { recipientUserId: id },
       include: [
-        { model: User, attributes: ["id", "firstName", "lastName", "email"] },
+        { model: User, attributes: ['id', 'firstName', 'lastName', 'email'] },
         { model: Booking },
       ],
     });
@@ -148,7 +148,7 @@ router.get("/:id/profile/message", async (req, res, next) => {
   }
 });
 
-router.post("/:id/profile/message", async (req, res, next) => {
+router.post('/:id/profile/message', async (req, res, next) => {
   const id = parseInt(req.params.id);
   const { title, content, recipientUserId, date, isReply } = req.body;
 
@@ -181,7 +181,7 @@ router.post("/:id/profile/message", async (req, res, next) => {
   }
 });
 
-router.put("/:id/profile/message/:messageId", async (req, res, next) => {
+router.put('/:id/profile/message/:messageId', async (req, res, next) => {
   const id = parseInt(req.params.id);
   const messageId = parseInt(req.params.messageId);
 
@@ -206,7 +206,7 @@ router.put("/:id/profile/message/:messageId", async (req, res, next) => {
   }
 });
 
-router.delete("/:id/profile/message/:messageId", async (req, res, next) => {
+router.delete('/:id/profile/message/:messageId', async (req, res, next) => {
   const id = parseInt(req.params.id);
   const messageId = parseInt(req.params.messageId);
 
@@ -228,13 +228,13 @@ router.delete("/:id/profile/message/:messageId", async (req, res, next) => {
   }
 });
 
-router.get("/:id/profile/reviews", async (req, res, next) => {
+router.get('/:id/profile/reviews', async (req, res, next) => {
   const id = parseInt(req.params.id);
   try {
     const reviews = await Reviews.findAll({
       where: { profileId: id },
       include: [
-        { model: User, attributes: ["id", "firstName", "lastName", "email", "businessName"] },
+        { model: User, attributes: ['id', 'firstName', 'lastName', 'email', 'businessName'] },
       ],
     });
 
@@ -246,15 +246,21 @@ router.get("/:id/profile/reviews", async (req, res, next) => {
   }
 });
 
-router.post("/:id/profile/reviews", async (req, res, next) => {
+router.post('/:id/profile/reviews', async (req, res, next) => {
   const { title, content, userId, reviewScore } = req.body;
 
-  console.log("WHATS IN REQ.BODY", req.body);
+  console.log('WHATS IN REQ.BODY', req.body);
 
   const id = parseInt(req.params.id);
 
   try {
-    const newReview = await Reviews.create({ profileId: id, title, content, userId, reviewScore });
+    const newReview = await Reviews.create({
+      profileId: id,
+      title,
+      content,
+      userId,
+      reviewScore,
+    });
 
     if (newReview) {
       res.json(newReview);
@@ -264,7 +270,7 @@ router.post("/:id/profile/reviews", async (req, res, next) => {
   }
 });
 
-router.post("/profile/availability", async (req, res, next) => {
+router.post('/profile/availability', async (req, res, next) => {
   const { availableDate, profileId } = req.body;
 
   try {
@@ -276,7 +282,7 @@ router.post("/profile/availability", async (req, res, next) => {
   }
 });
 
-router.delete("/profile/availability", async (req, res, next) => {
+router.delete('/profile/availability', async (req, res, next) => {
   const { availabledate, profileid } = req.headers;
 
   try {
