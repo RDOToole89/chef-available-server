@@ -151,13 +151,13 @@ module.exports = {
         },
         {
           profileId: 2,
-          date: '2021-09-30',
+          date: '2021-09-29',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           profileId: 2,
-          date: '2021-09-31',
+          date: '2021-09-30',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -247,13 +247,13 @@ module.exports = {
         },
         {
           profileId: 3,
-          date: '2021-09-30',
+          date: '2021-09-29',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           profileId: 3,
-          date: '2021-09-31',
+          date: '2021-09-30',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
