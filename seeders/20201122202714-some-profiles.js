@@ -43,17 +43,6 @@ module.exports = {
         },
         {
           userId: 4,
-          description: 'Dave succesful guitar player and business owner.',
-          imgUrl:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWXPUbueB-aTfpneyPm9TfNo_OsbOrCTdi2A&usqp=CAU',
-          position: 'Restaurant owner',
-          hourlyRate: 138.5,
-          yearsOfExperience: 1994,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 5,
           description:
             'Jamie Oliver, (born May 27, 1975, Clavering, Essex, England), British chef who achieved worldwide fame with his television shows The Naked Chef (1999) and Jamie Oliver’s Food Revolution (2010–11) and as author of a number of cookbooks with a variety of culinary themes.',
           imgUrl:
@@ -65,7 +54,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          userId: 6,
+          userId: 5,
           description:
             'Gordon James Ramsay OBE (born 8 November 1966) is a British chef, restaurateur, writer, and television personality. He was born in Johnstone, Scotland, and raised in Stratford-upon-Avon, England. His restaurants have been awarded 16 Michelin stars in total and currently hold a total of seven.',
           imgUrl:
@@ -77,7 +66,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          userId: 7,
+          userId: 6,
           description:
             'Nusret Gökçe, nicknamed Salt Bae, is a Turkish butcher, chef, and restaurateur, who owns Nusr-Et, a chain of luxury steak houses. His technique for preparing and seasoning meat became an Internet meme. ',
           imgUrl:
@@ -85,6 +74,17 @@ module.exports = {
           position: 'Internet Sensation',
           hourlyRate: 1000.95,
           yearsOfExperience: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 7,
+          description: 'Dave succesful guitar player and business owner.',
+          imgUrl:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWXPUbueB-aTfpneyPm9TfNo_OsbOrCTdi2A&usqp=CAU',
+          position: 'Restaurant owner',
+          hourlyRate: 138.5,
+          yearsOfExperience: 1994,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

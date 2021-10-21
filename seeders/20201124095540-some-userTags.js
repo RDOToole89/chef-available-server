@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "userTags",
+      'userTags',
       [
         {
           profileId: 1,
@@ -127,67 +127,67 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          profileId: 5,
+          profileId: 4,
           specializationTagId: 15,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 5,
+          profileId: 4,
           specializationTagId: 16,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 5,
+          profileId: 4,
           specializationTagId: 17,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 6,
+          profileId: 5,
           specializationTagId: 18,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 6,
+          profileId: 5,
           specializationTagId: 19,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 6,
+          profileId: 5,
           specializationTagId: 20,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 7,
+          profileId: 6,
           specializationTagId: 21,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 7,
+          profileId: 6,
           specializationTagId: 22,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 7,
+          profileId: 6,
           specializationTagId: 23,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 7,
+          profileId: 6,
           specializationTagId: 24,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          profileId: 7,
+          profileId: 6,
           specializationTagId: 25,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -198,6 +198,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("userTags", null, {});
+    await queryInterface.bulkDelete('userTags', null, {});
   },
 };
