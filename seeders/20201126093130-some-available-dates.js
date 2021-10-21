@@ -217,13 +217,13 @@ module.exports = {
         },
         {
           profileId: 2,
-          date: '2021-11-30',
+          date: '2021-11-29',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           profileId: 2,
-          date: '2021-11-31',
+          date: '2021-11-30',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

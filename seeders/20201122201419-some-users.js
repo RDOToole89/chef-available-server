@@ -55,7 +55,6 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-
         {
           firstName: 'Jamie',
           lastName: 'Oliver',
